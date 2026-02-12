@@ -1,0 +1,22 @@
+@prefix epos: <https://www.epos-eu.org/epos-dcat-ap#>.
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gsp: <http://www.opengis.net/ont/geosparql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+
+[]
+
+# This property refers to a geographic region.
+# The POLYGON format is: POLYGON((lon1 lat1, lon2 lat2,...))
+
+dct:spatial [ a dct:Location ;
+      locn:geometry "POLYGON((180.0 -90.0, -180.0 -90.0, -180.0 90.0, 180.0 90.0, 180.0 -90.0))"^^gsp:wktLiteral ;
+	];
+.
+
+[]
+#  This property refers to a point.
+#  The POINT format is: POINT(lon lat elevation). Skip elevation when the value is 0.
+dct:spatial [ a dct:Location ;
+		locn:geometry "POINT(5.1767 52.1017 3)"^^gsp:wktLiteral ;
+	] ;
+.

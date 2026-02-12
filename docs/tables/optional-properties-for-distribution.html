@@ -1,0 +1,261 @@
+<table class="simple" id="table-optional-properties-for-distribution">
+  <thead>
+    <tr>
+      <th class="small">
+          <p>Property</p>
+      </th>
+      <th class="small">
+          <p>URI</p>
+      </th>
+      <th class="small">
+          <p>Range</p>
+      </th>
+      <th class="large">
+          <p>Usage note</p>
+      </th>
+      <th class="xsmall">
+          <p>Card.</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <!--  <tr class="property optional" id="distribution.accessservice">
+      <td>
+          <p>accessService</p>
+      </td>
+      <td>
+          <p><code>dcat:accessService</code></p>
+      </td>
+      <td>
+          <p><code>dcat:DataService</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a Data Service that gives access to the Distribution of the Dataset.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>-->
+    <tr class="property optional" id="distribution.bytesize">
+      <td>
+          <p>byteSize</p>
+          </td>
+      <td>
+          <p><code>dcat:byteSize</code></p>
+      </td>
+      <td>
+          <p><code>xsd:nonNegativeInteger</code></p>
+      </td>
+      <td class="justify">
+          <p>This property contains the size of a Distribution in bytes.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.checksum">
+      <td>
+          <p>checksum</p>
+      </td>
+      <td>
+          <p><code>spdx:checksum</code></p>
+      </td>
+      <td>
+          <p><code>spdx:Checksum</code></p>
+      </td>
+      <td class="justify">
+          <p>This property provides a mechanism that can be used to verify that the contents of a Distribution have not changed. The checksum is related to the download URL.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.downloadurl">
+      <td>
+          <p>downloadURL</p>
+      </td>
+      <td>
+          <p><code>dcat:downloadURL</code></p>
+      </td>
+      <td>
+          <p><code>rdfs:Resource</code></p>
+      </td>
+      <td class="justify">
+          <p>This property contains a URL that is a direct link to a downloadable file in a given format.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
+    <!--<tr class="property optional" id="distribution.haspolicy">
+      <td>
+          <p>hasPolicy</p>
+      </td>
+      <td>
+          <p><code>odrl:hasPolicy</code></p>
+      </td>
+      <td>
+          <p><code>odrl:Policy</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to the policy expressing the rights associated with the Distribution if using the [[VOCAB-ODRL]] vocabulary.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>-->
+    <tr class="property optional" id="distribution.issued">
+      <td>
+          <p>issued</p>
+      </td>
+      <td>
+          <p><code>dct:issued</code></p>
+      </td>
+      <td>
+          <p><code>rdfs:Literal</code><br>typed as <code>xsd:date</code> or <code>xsd:dateTime</code></p>
+      </td>
+      <td class="justify">
+          <p>This property contains the date of formal issuance (e.g., publication) of the Distribution.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.language">
+      <td>
+          <p>language</p>
+      </td>
+      <td>
+          <p><code>dct:language</code></p>
+      </td>
+      <td>
+          <p><code>dct:LinguisticSystem</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a language used in the Distribution. This property can be repeated if the metadata is provided in multiple languages.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.license">
+      <td>
+          <p>license</p>
+      </td>
+      <td>
+          <p><code>dct:license</code></p>
+      </td>
+      <td>
+          <p><code>dct:LicenseDocument</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to the license under which the Distribution is made available.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.mediatype">
+      <td>
+          <p>mediaType</p>
+      </td>
+      <td>
+          <p><code>dcat:mediaType</code></p>
+      </td>
+      <td>
+          <p><code>dct:MediaTypeOrExtent</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA [[IANA-MEDIA-TYPES]].</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.modified">
+      <td>
+          <p>modified</p>
+      </td>
+      <td>
+          <p><code>dct:modified</code></p>
+      </td>
+      <td>
+          <p><code>rdfs:Literal</code><br>typed as <code>xsd:date</code> or <code>xsd:dateTime</code></p>
+      </td>
+      <td class="justify">
+          <p>This property contains the most recent date on which the Distribution was changed or modified.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.page">
+      <td>
+          <p>page</p>
+      </td>
+      <td>
+          <p><code>foaf:page</code></p>
+      </td>
+      <td>
+          <p><code>foaf:Document</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a page or document about this Distribution.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.rights">
+      <td>
+          <p>rights</p>
+      </td>
+      <td>
+          <p><code>dct:rights</code></p>
+      </td>
+      <td>
+          <p><code>dct:RightsStatement</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a statement that specifies rights associated with the Distribution.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.status">
+      <td>
+          <p>status</p>
+      </td>
+      <td>
+          <p><code>adms:status</code></p>
+      </td>
+      <td>
+          <p><code>skos:Concept</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to the status of the distribution in the context of maturity lifecycle. It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn.</p>
+      </td>
+      <td class="center">
+          <p>0..1</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="distribution.title">
+      <td>
+          <p>title</p>
+      </td>
+      <td>
+          <p><code>dct:title</code></p>
+      </td>
+      <td>
+          <p><code>rdfs:Literal</code></p>
+      </td>
+      <td class="justify">
+          <p>This property contains a name given to the Distribution. This property can be repeated for parallel language versions of the description.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
+</tbody>
+</table>

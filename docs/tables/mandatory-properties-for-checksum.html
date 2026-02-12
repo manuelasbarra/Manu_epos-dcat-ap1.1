@@ -1,0 +1,57 @@
+<table class="simple" id="table-mandatory-properties-for-checksum">
+  <thead>
+    <tr>
+      <th class="small">
+          <p>Property</p>
+      </th>
+      <th class="small">
+          <p>URI</p>
+      </th>
+      <th class="small">
+          <p>Range</p>
+      </th>
+      <th class="large">
+          <p>Usage note</p>
+      </th>
+      <th class="xsmall">
+          <p>Card.</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="property mandatory" id="checksum.algorithm">
+      <td>
+          <p>algorithm</p>
+      </td>
+      <td>
+          <p><code>spdx:algorithm</code></p>
+      </td>
+      <td>
+          <p><code>spdx:checksumAlgorithm</code></p>
+      </td>
+      <td class="justify">
+          <p>The algorithm used to produce the subject Checksum.</p>
+      </td>
+      <td class="center">
+          <p>1..1</p>
+      </td>
+    </tr>
+    <tr class="property mandatory" id="checksum.checksumvalue">
+      <td>
+          <p>checksumValue</p>
+      </td>
+      <td>
+          <p><code>spdx:checksumValue</code></p>
+      </td>
+      <td class="justify">
+          <p><code>rdfs:Literal</code> typed as <code>xsd:hexBinary</code></p>
+      </td>
+      <td>
+          <p>This property provides a lower case hexadecimal encoded digest value produced using a specific algorithm.</p>
+      </td>
+      <td class="center">
+          <p>1..1</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
