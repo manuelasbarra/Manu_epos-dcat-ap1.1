@@ -19,23 +19,6 @@
     </tr>
   </thead>
   <tbody>
-  <!--  <tr class="property optional" id="distribution.accessservice">
-      <td>
-          <p>accessService</p>
-      </td>
-      <td>
-          <p><code>dcat:accessService</code></p>
-      </td>
-      <td>
-          <p><code>dcat:DataService</code></p>
-      </td>
-      <td class="justify">
-          <p>This property refers to a Data Service that gives access to the Distribution of the Dataset.</p>
-      </td>
-      <td class="center">
-          <p>0..n</p>
-      </td>
-    </tr>-->
     <tr class="property optional" id="distribution.bytesize">
       <td>
           <p>byteSize</p>
@@ -163,7 +146,7 @@
           <p><code>dcat:mediaType</code></p>
       </td>
       <td>
-          <p><code>dct:MediaTypeOrExtent</code></p>
+          <p><code>dct:MediaTypeOrExtent</code> or <br><code>rdfs:Literal</code></code></p>
       </td>
       <td class="justify">
           <p>This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA [[IANA-MEDIA-TYPES]].</p>
@@ -231,7 +214,7 @@
           <p><code>adms:status</code></p>
       </td>
       <td>
-          <p><code>skos:Concept</code></p>
+          <p><code>skos:Concept</code> or <br><code>rdfs:Literal</code></p>
       </td>
       <td class="justify">
           <p>This property refers to the status of the distribution in the context of maturity lifecycle. It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn.</p>
