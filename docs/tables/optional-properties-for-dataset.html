@@ -104,6 +104,23 @@
           <p>0..n</p>
       </td>
     </tr>
+    <tr class="property optional" id="dataset.hasqualityannotation">
+      <td>
+          <p>hasQualityAnnotation</p>
+      </td>
+      <td>
+          <p><code>dqv:hasQualityAnnotation</code></p>
+      </td>
+      <td>
+          <p><code>oa:Annotation</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a statement related to quality of the Dataset, including rating, quality certificate that can be associated to the Dataset.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
     <tr class="property optional" id="dataset.hasversion">
       <td>
           <p>hasVersion</p>
@@ -155,7 +172,7 @@
           <p>0..n</p>
       </td>
     </tr>
-    <!--<tr class="property optional" id="dataset.isreferencedby">
+    <tr class="property optional" id="dataset.isreferencedby">
       <td>
           <p>isReferencedBy</p>
       </td>
@@ -171,7 +188,7 @@
       <td class="center">
           <p>0..n</p>
       </td>
-    </tr>-->
+    </tr>
     <tr class="property optional" id="dataset.issued">
       <td>
           <p>issued</p>
@@ -286,6 +303,23 @@
       </td>
       <td class="justify">
           <p>This property contains a statement about the lineage of a Dataset.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
+    <tr class="property optional" id="dataset.qualifiedattribution">
+      <td>
+          <p>qualifiedAttribution</p>
+      </td>
+      <td>
+          <p><code>prov:qualifiedAttribution</code></p>
+      </td>
+      <td>
+          <p><code>prov:Attribution</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a link to an Agent having some form of responsibility for the Dataset.</p>
       </td>
       <td class="center">
           <p>0..n</p>
@@ -427,7 +461,7 @@
           <p>0..n</p>
       </td>
     </tr>
-  <!--  <tr class="property optional" id="dataset.wasgeneratedby">
+    <tr class="property optional" id="dataset.wasgeneratedby">
       <td>
           <p>wasGeneratedBy</p>
       </td>
@@ -443,6 +477,23 @@
       <td class="center">
           <p>0..n</p>
       </td>
-    </tr>--->
+    </tr>
+    <tr class="property optional" id="dataset.variablemeasured">
+      <td>
+          <p>variableMeasured</p>
+      </td>
+      <td>
+          <p><code>schema:variableMeasured</code></p>
+      </td>
+      <td>
+          <p><code>rdfs:Literal</code></p>
+      </td>
+      <td class="justify">
+          <p>This property refers to a variable that is measured by the Dataset.</p>
+      </td>
+      <td class="center">
+          <p>0..n</p>
+      </td>
+    </tr>
 </tbody>
 </table>
