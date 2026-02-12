@@ -52,7 +52,7 @@
   #owl:imports <http://www.w3.org/ns/oa#> ;
   #owl:imports <http://www.w3.org/ns/org#> ;
   #owl:imports <http://xmlns.com/foaf/0.1/> ;
-  owl:versionInfo "1.0" ;
+  owl:versionInfo "1.1" ;
   foaf:homepage <http://www.epos-eu.org/epos-dcat-ap> ; .
 
  #check sh:class o sh:node differenza sembra si usi sh:node con classi epos
