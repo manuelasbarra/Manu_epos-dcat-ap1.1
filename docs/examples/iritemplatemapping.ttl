@@ -43,7 +43,7 @@ hydra:mapping[ a hydra:IriTemplateMapping ;
       
     # Optional
 	  schema:readonlyValue "true"^^xsd:boolean ;
-	  #schema:multiValues "false"^^xsd:boolean ;
+	  # schema:multipleValues "false"^^xsd:boolean ;
 	];
 
 hydra:mapping[ a hydra:IriTemplateMapping ;
@@ -54,6 +54,6 @@ hydra:mapping[ a hydra:IriTemplateMapping ;
 	  http:paramValue "M" ;
 	  rdfs:range "xsd:string" ;
 	  schema:defaultValue "B" ;
-	  schema:multiValues "false"^^xsd:boolean ;	
+	  schema:multipleValues "false"^^xsd:boolean ;	
 	];
 .
