@@ -24,6 +24,8 @@
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix gsp: <http://www.opengis.net/ont/geosparql#> .
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
 
 <http://www.epos-eu.org/epos-dcat-ap>
   rdf:type owl:Ontology ;
@@ -2211,7 +2213,7 @@ epos:ControlActionShape
       sh:path schema:object ;
       sh:description "The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read a book.";
       sh:or ( [ sh:class schema:CreativeWork ; ]
-        [ sh:class chema:DataDownload ; ] );
+        [ sh:class schema:DataDownload ; ] );
       sh:maxCount 1; 
     ] ;
   sh:property [
