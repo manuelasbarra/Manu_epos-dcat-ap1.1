@@ -1505,7 +1505,8 @@ epos:DatasetShape
   sh:property [
       sh:path foaf:page ;
       sh:description "This property refers to a page or document about this Dataset.";
-      sh:class foaf:Document ;
+      sh:or ( [ sh:class foaf:Document ; ]
+        [ sh:datatype xsd:string ; ] );
     ] ;
   sh:property [
       sh:path adms:versionNotes ;
