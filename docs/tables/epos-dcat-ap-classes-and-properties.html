@@ -1755,6 +1755,38 @@
 <tr>
     <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
     <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="author" href="#softwareapplication.author"><code>schema:author</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>   
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="contributor" href="#softwareapplication.contributor"><code>schema:contributor</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>    
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="creator" href="#softwareapplication.creator"><code>schema:creator</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>       
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="funder" href="#softwareapplication.funder"><code>schema:funder</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>      
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
     <td class="property optional"><p class="plus"><a title="description" href="#softwareapplication.description"><code>schema:description</code></a></p></td>
     <td><code>rdfs:Literal</code></td>
     <td>Optional</td>
@@ -1803,6 +1835,30 @@
 <tr>
     <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
     <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="maintainer" href="#softwareapplication.maintainer"><code>schema:maintainer</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>     
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="memoryrequirements" href="#softwareapplication.memoryrequirements"><code>schema:memoryRequirements</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>    
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="operatingsystem" href="#softwareapplication.operatingsystem"><code>schema:soperatingSystem</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..n</td>
+</tr>     
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
     <td class="property optional"><p class="plus"><a title="potentialaction" href="#softwareapplication.potentialaction"><code>schema:potentialAction</code></a></p></td>
     <td><code>schema:ControlAction</code></td>
     <td>Optional</td>
@@ -1811,11 +1867,60 @@
 <tr>
     <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
     <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="processorrequirements" href="#softwareapplication.processorrequirements"><code>schema:processorRequirements</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>    
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="provider" href="#softwareapplication.provider"><code>schema:provider</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td>
+    <td>Optional</td>
+    <td class="center">0..n</td>
+</tr>
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="publisher" href="#softwareapplication.publisher"><code>schema:publisher</code></a></p></td>
+    <td><code>schema:Organization</code> or <code>schema:Person</code> or <code>foaf:Agent</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr> 
+
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
     <td class="property optional"><p class="plus"><a title="relation" href="#softwareapplication.relation"><code>dct:relation</code></a></p></td>
     <td><code>hydra:Operation</code></td>
     <td>Optional</td>
     <td class="center">0..n</td>
 </tr>
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="citation" href="#softwareapplication.citation"><code>schema:citation</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..n</td>
+</tr>
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="storagerequirements" href="#softwareapplication.storagerequirements"><code>schema:storageRequirements</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>      
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="size" href="#softwareapplication.size"><code>schema:fileSize</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..n</td>
+</tr>    
 <tr>
     <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
     <td><code>schema:SoftwareApplication</code></td>
@@ -1835,10 +1940,42 @@
 <tr>
     <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
     <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="spatialcoverage" href="#softwareapplication.spatialcoverage"><code>schema:spatialCoverag</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>     
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="status" href="#softwareapplication.creativeworkstatus"><code>schema:creativeWorkStatus</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="temporalcoverage" href="#softwareapplication.temporalcoverage"><code>schema:temporalCoverag</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
+</tr>     
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
     <td class="property optional"><p class="plus"><a title="theme" href="#softwareapplication.theme"><code>dcat:theme</code></a></p></td>
     <td><code>skos:Concept</code></td>
     <td>Optional</td>
     <td class="center">0..n</td>
+</tr>
+<tr>
+    <td class="plus"><a href="#properties-for-softwareapplication">SoftwareApplication</a></td>
+    <td><code>schema:SoftwareApplication</code></td>
+    <td class="property optional"><p class="plus"><a title="timerequired" href="#softwareapplication.timerequired"><code>schema:timeRequired</code></a></p></td>
+    <td><code>rdfs:Literal</code></td>
+    <td>Optional</td>
+    <td class="center">0..1</td>
 </tr>
     <!-- SoftwareSourceCode -->
 <tr>
