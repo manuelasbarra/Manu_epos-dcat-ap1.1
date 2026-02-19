@@ -150,7 +150,8 @@ epos:dynamicRange
   rdf:type owl:ObjectProperty ;
   rdfs:comment "This property contains the full scale measuring ability, in nT (unit and value)"@en  ;
   rdfs:domain epos:Equipment ;
-  rdfs:range schema:QuantitativeValue ;
+  rdfs:range rdfs:Literal ;
+  #rdfs:range schema:QuantitativeValue ;
 .
 epos:filter
   rdf:type owl:ObjectProperty ;
@@ -162,7 +163,8 @@ epos:samplePeriod
   rdf:type owl:ObjectProperty ;
   rdfs:comment "This property contains the sample period in ms"@en  ;
   rdfs:domain epos:Equipment ;
-  rdfs:range schema:QuantitativeValue ;
+  #rdfs:range schema:QuantitativeValue ;
+  rdfs:range rdfs:Literal ;
 .
 epos:orientation
   rdf:type owl:ObjectProperty ;
@@ -950,12 +952,7 @@ epos:IriTemplateMappingShape
       sh:datatype xsd:string ;
       sh:maxCount 1 ;
     ] ;
-  sh:property [
-      sh:path epos:healthCheckValue ;
-      sh:description "This property contains the value of the parameter used in service health monitoring.";
-      sh:datatype xsd:string ;
-      sh:maxCount 1 ;
-    ] ;
+  
   sh:property [
       sh:path schema:minValue ;
       sh:description "This property contains the minimum value of the parameter.";
@@ -974,16 +971,6 @@ epos:IriTemplateMappingShape
       sh:datatype xsd:string ;
     ] ;
   sh:property [
-      sh:path schema:multipleValues ;
-      sh:description "Whether multiple values are allowed for the property. Default is false.";
-      sh:datatype xsd:boolean ;
-    ] ;
-  sh:property [
-      sh:path schema:readonlyValue ;
-      sh:description "Whether or not a property is mutable. Default is false. Specifying this for a property that also has a value makes it act similar to a hidden input in an HTML form.";
-      sh:datatype xsd:boolean ;
-    ] ;
-  sh:property [
       sh:path schema:valuePattern ;
       sh:description "This property contains the regular expression for testing values according to the parameter's specification.";
       sh:datatype xsd:string ;
@@ -994,6 +981,25 @@ epos:IriTemplateMappingShape
       sh:description "This property contains the vocabulary term which indicates the semantic description of parameter.";
       sh:datatype xsd:string ;
       sh:maxCount 1 ;
+    ] ;
+####
+# IriTemplateMapping optional properties
+####
+  sh:property [
+      sh:path epos:healthCheckValue ;
+      sh:description "This property contains the value of the parameter used in service health monitoring.";
+      sh:datatype xsd:string ;
+      sh:maxCount 1 ;
+    ] ;
+  sh:property [
+      sh:path schema:multipleValues ;
+      sh:description "Whether multiple values are allowed for the property. Default is false.";
+      sh:datatype xsd:boolean ;
+    ] ;
+  sh:property [
+      sh:path schema:readonlyValue ;
+      sh:description "Whether or not a property is mutable. Default is false. Specifying this for a property that also has a value makes it act similar to a hidden input in an HTML form.";
+      sh:datatype xsd:boolean ;
     ] ;
 .
 
@@ -1203,21 +1209,6 @@ epos:EquipmentShape
 # Equipment recommended properties
 ####
   sh:property [
-      sh:path dct:type ;
-      sh:minCount 1 ;
-      sh:or ( [ sh:datatype xsd:anyURI ; ]
-        [ sh:class skos:Concept ; ] ) ;
-      sh:message "Type is recommended. Please fill in a value"@en  ;
-      sh:severity sh:Warning ;
-    ] ;
-  sh:property [
-      sh:path dct:type ;
-      sh:description "This property refers to the type of the Equipment.";
-      sh:or ( [ sh:datatype xsd:anyURI ; ]
-        [ sh:class skos:Concept ; ] ) ;
-      sh:maxCount 1 ;
-    ] ;
-  sh:property [
       sh:path schema:manufacturer ;
       sh:description "This property refers to an Organisation responsible for manufacturing the Equipment.";
       sh:class schema:Organization ;
@@ -1243,14 +1234,35 @@ epos:EquipmentShape
       sh:message "SerialNumber is recommended. Please fill in a value"@en ;
       sh:severity sh:Warning ;
     ] ;
+  sh:property [
+      sh:path dct:type ;
+      sh:minCount 1 ;
+      sh:or ( [ sh:datatype xsd:anyURI ; ]
+        [ sh:class skos:Concept ; ] ) ;
+      sh:message "Type is recommended. Please fill in a value"@en  ;
+      sh:severity sh:Warning ;
+    ] ;
+  sh:property [
+      sh:path dct:type ;
+      sh:description "This property refers to the type of the Equipment.";
+      sh:or ( [ sh:datatype xsd:anyURI ; ]
+        [ sh:class skos:Concept ; ] ) ;
+      sh:maxCount 1 ;
+    ] ;
 ####
 # Equipment optional properties
 ####
   sh:property [
-      sh:path dct:isPartOf ;
-      sh:description "This property refers to an Equipment or a Facility in which the described Equipment is included.";
-      sh:or ( [ sh:class epos:Equipment; ]
-        [ sh:class epos:Facility; ] );
+      sh:path dcat:contactPoint ;
+      sh:description "This property contains contact information that can be used for sending comments about the Equipment.";
+      sh:node epos:ContactPointType ;
+    ];
+  sh:property [
+      sh:path epos:dynamicRange ;
+      sh:description "This property contains the full-scale measuring ability, in nT (unit and value).";
+      #sh:class schema:QuantitativeValue ;
+	  sh:datatype xsd:string ;
+      sh:maxCount 1 ;
     ] ;
   sh:property [
       sh:path epos:filter ;
@@ -1259,16 +1271,29 @@ epos:EquipmentShape
       sh:maxCount 1 ;
     ] ;
   sh:property [
-      sh:path epos:dynamicRange ;
-      sh:description "This property contains the full-scale measuring ability, in nT (unit and value).";
-      sh:class schema:QuantitativeValue ;
-      sh:maxCount 1 ;
+      sh:path dct:isPartOf ;
+      sh:description "This property refers to an Equipment or a Facility in which the described Equipment is included.";
+      sh:or ( [ sh:class epos:Equipment; ]
+        [ sh:class epos:Facility; ] );
     ] ;
   sh:property [
       sh:path epos:orientation ;
       sh:description "This property describes how the instrument is oriented.";
       sh:datatype xsd:string ;
       sh:maxCount 1 ;
+    ] ;
+  sh:property [
+      sh:path foaf:page ;
+      sh:description "This property refers to a web page about this Equipment.";
+      sh:datatype xsd:anyURI ;
+    ];
+  sh:property [
+      sh:path dct:relation ;
+      sh:description "This property refers to a related resource (e.g., Dataset, WebService, etc.).";
+      sh:or ( [ sh:class rdfs:Resource ; ]
+        [ sh:class dcat:Dataset ; ]
+	[ sh:class schema:Service ; ]
+	[ sh:class epos:WebService ; ] );
     ] ;
   sh:property [
       sh:path epos:resolution ;
@@ -1279,14 +1304,10 @@ epos:EquipmentShape
   sh:property [
       sh:path epos:samplePeriod ;
       sh:description "This property contains the sample period in mS (unit and value)";
-      sh:class schema:QuantitativeValue ;
+      #sh:class schema:QuantitativeValue ;
+	  sh:datatype xsd:string ;
       sh:maxCount 1 ;
     ] ;
-  sh:property [
-      sh:path dcat:contactPoint ;
-      sh:description "This property contains contact information that can be used for sending comments about the Equipment.";
-      sh:node epos:ContactPointType ;
-    ];
   sh:property [
       sh:path dct:spatial ;
       sh:description "This property refers to a geographical location of the Equipment.";
@@ -1294,32 +1315,16 @@ epos:EquipmentShape
       sh:maxCount 1 ;
     ] ;
   sh:property [
-      sh:path epos:annotation ;
-      sh:class oa:Annotation ;
-    ] ;
-  sh:property [
       sh:path dct:temporal ;
       sh:description "This property contains the start and the end of the period. ";
       sh:class dct:PeriodOfTime ;
     ] ;
-  sh:property [
-      sh:path dct:relation ;
-      sh:description "This property refers to a related resource (e.g., Dataset, WebService, etc.).";
-      sh:or ( [ sh:class rdfs:Resource ; ]
-        [ sh:class dcat:Dataset ; ]
-	[ sh:class schema:Service ; ]
-	[ sh:class epos:WebService ; ] );
-    ] ;
+
   sh:property [
      sh:path dcat:theme ;
      sh:description "This property refers to a category of the Equipment. An Equipment may be associated with multiple themes.";
      sh:class skos:Concept ;
     ] ;
-  sh:property [
-      sh:path foaf:page ;
-      sh:description "This property refers to a web page about this Equipment.";
-      sh:datatype xsd:anyURI ;
-    ];
 .
 
 epos:DatasetShape
@@ -1352,14 +1357,6 @@ epos:DatasetShape
 # Dataset recommended properties
 ####
   sh:property [
-      sh:path dcat:distribution ;
-      sh:description "This property links the Dataset to an available Distribution.";
-      sh:minCount 1 ;
-      sh:class dcat:Distribution;
-      sh:message "Distribution is recommended. Please fill in a value"@en  ;
-      sh:severity sh:Warning ;
-    ] ;
-  sh:property [
       sh:path dcat:contactPoint ;
       sh:description "This property contains contact information that can be used for sending comments about the Dataset.";
       sh:minCount 1 ;
@@ -1368,12 +1365,11 @@ epos:DatasetShape
       sh:severity sh:Warning ;
     ] ;
   sh:property [
-      sh:path dct:publisher ;
-      sh:description "This property refers to an entity (organisation) responsible for making the Dataset available.";
+      sh:path dcat:distribution ;
+      sh:description "This property links the Dataset to an available Distribution.";
       sh:minCount 1 ;
-      sh:or ( [ sh:class foaf:Agent ; ]
-      [ sh:class schema:Organization ; ] ) ;
-      sh:message "Publisher is recommended. Please fill in a value"@en  ;
+      sh:class dcat:Distribution;
+      sh:message "Distribution is recommended. Please fill in a value"@en  ;
       sh:severity sh:Warning ;
     ] ;
   sh:property [
@@ -1384,6 +1380,15 @@ epos:DatasetShape
       sh:message "Keyword is recommended. Please fill in a value"@en  ;
       sh:severity sh:Warning ;
     ] ;
+  sh:property [
+      sh:path dct:publisher ;
+      sh:description "This property refers to an entity (organisation) responsible for making the Dataset available.";
+      sh:minCount 1 ;
+      sh:or ( [ sh:class foaf:Agent ; ]
+      [ sh:class schema:Organization ; ] ) ;
+      sh:message "Publisher is recommended. Please fill in a value"@en  ;
+      sh:severity sh:Warning ;
+    ] ;  
   sh:property [
       sh:path dcat:theme ;
       sh:description "This property refers to a category of the Dataset. A Dataset may be associated with multiple themes.";
@@ -1396,18 +1401,7 @@ epos:DatasetShape
 ####
 # Dataset optional properties
 ####
-  sh:property [
-      sh:path dct:created ;
-      sh:description "This property contains the date on which the Dataset was created.";
-      sh:maxCount 1 ;
-      sh:node epos:DateOrDateTimeDataType ;
-    ] ;
-  sh:property [
-      sh:path dct:type ;
-      sh:description "This property refers to the type of the Dataset. A controlled vocabulary for the values has not been established.";
-      sh:datatype xsd:anyURI ;
-      sh:maxCount 1 ;
-    ] ;
+
   sh:property [
       sh:path dct:accessRights ;
       sh:description "This property refers to information that indicates whether the Dataset is open data, has access restrictions or is not public. A controlled vocabulary with three members (:public, :restricted, :non-public) will be created and maintained by the Publications Office of the EU.";
@@ -1428,14 +1422,31 @@ epos:DatasetShape
       sh:class dct:Standard ;
   ] ;
   sh:property [
+      sh:path dct:created ;
+      sh:description "This property contains the date on which the Dataset was created.";
+      sh:maxCount 1 ;
+      sh:node epos:DateOrDateTimeDataType ;
+    ] ;
+  sh:property [
+      sh:path dqv:hasQualityAnnotation ;
+      sh:description "This property refers to a statement related to quality of the Dataset, including rating, quality certificate that can be associated to the Dataset. ";
+      sh:class oa:Annotation ;
+    ] ;
+  sh:property [
       sh:path dct:hasVersion ;
       sh:description "This property refers to a related Dataset that is a version, edition, or adaptation of the described Dataset.";
       sh:class dcat:Dataset ;
     ] ;
   sh:property [
-      sh:path dct:isVersionOf ;
-      sh:description "This property refers to a related Dataset of which the described Dataset is a version, edition, or adaptation.";
-      sh:class dcat:Dataset ;
+      sh:path adms:identifier ;
+      sh:description "This property refers to a secondary identifier of the Dataset, such as MAST/ADS, DataCite, DOI, EZID or W3ID.";
+      sh:class adms:Identifier ;
+    ] ;
+  sh:property [
+      sh:path dct:isReferencedBy ;
+      sh:description "This property is about a related resource, such as a publication, that references, cites, or otherwise points to the Dataset.";
+      sh:or ( [ sh:class rdfs:Resource ; ]
+        [ sh:datatype xsd:string ; ] );
     ] ;
   sh:property [
       sh:path dct:issued ;
@@ -1444,15 +1455,32 @@ epos:DatasetShape
       sh:node epos:DateOrDateTimeDataType ;
     ] ;
   sh:property [
+      sh:path dct:isVersionOf ;
+      sh:description "This property refers to a related Dataset of which the described Dataset is a version, edition, or adaptation.";
+      sh:class dcat:Dataset ;
+    ] ;
+  sh:property [
+      sh:path dcat:landingPage ;
+      sh:description "This property refers to a web page that provides access to the Dataset, its Distributions and/or additional information. It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator.";
+      sh:or ( [ sh:class foaf:Document ; ]
+        [ sh:datatype xsd:string ; ] );
+    ] ;
+  sh:property [
+      sh:path dct:language ;
+      sh:description "This property refers to a language of the Dataset. This property can be repeated if there are multiple languages in the Dataset.";
+      sh:class dct:LinguisticSystem ;
+    ] ;
+  sh:property [
       sh:path dct:modified ;
       sh:description "This property contains the most recent date on which the Dataset was changed or modified.";
       sh:maxCount 1 ;
       sh:node epos:DateOrDateTimeDataType ;
     ] ;
   sh:property [
-      sh:path dct:language ;
-      sh:description "This property refers to a language of the Dataset. This property can be repeated if there are multiple languages in the Dataset.";
-      sh:class dct:LinguisticSystem ;
+      sh:path foaf:page ;
+      sh:description "This property refers to a page or document about this Dataset.";
+      sh:or ( [ sh:class foaf:Document ; ]
+        [ sh:datatype xsd:string ; ] );
     ] ;
   sh:property [
       sh:path dct:provenance ;
@@ -1461,9 +1489,19 @@ epos:DatasetShape
         [ sh:datatype xsd:string ; ] );
     ] ;
   sh:property [
+      sh:path prov:qualifiedAttribution ;
+      sh:description "This property refers to a link to an Agent having some form of responsibility for the Dataset.";
+      sh:class prov:Attribution ;
+    ] ;
+  sh:property [
       sh:path dct:relation ;
       sh:description "This property refers to a related resource.";
       sh:class rdfs:Resource ;
+    ] ;
+  sh:property [
+      sh:path adms:sample ;
+      sh:description "This property refers to a sample distribution of the dataset";
+      sh:class dcat:Distribution ;
     ] ;
   sh:property [
       sh:path dct:source ;
@@ -1481,37 +1519,32 @@ epos:DatasetShape
       sh:class dct:PeriodOfTime ;
     ] ;
   sh:property [
+      sh:path dct:type ;
+      sh:description "This property refers to the type of the Dataset. A controlled vocabulary for the values has not been established.";
+      sh:datatype xsd:anyURI ;
+      sh:maxCount 1 ;
+    ] ;
+  sh:property [
+      sh:path schema:variableMeasured ;
+      sh:description "This property refers to a variable that is measured by the Dataset.";
+      sh:datatype xsd:string;
+    ] ;
+  sh:property [
       sh:path owl:versionInfo ;
       sh:description "This property contains a version number or other version designation of the Dataset.";
       sh:maxCount 1 ;
       sh:datatype xsd:string;
     ] ;
   sh:property [
-      sh:path adms:identifier ;
-      sh:description "This property refers to a secondary identifier of the Dataset, such as MAST/ADS, DataCite, DOI, EZID or W3ID.";
-      sh:class adms:Identifier ;
-    ] ;
-  sh:property [
-      sh:path adms:sample ;
-      sh:description "This property refers to a sample distribution of the dataset";
-      sh:class dcat:Distribution ;
-    ] ;
-  sh:property [
-      sh:path dcat:landingPage ;
-      sh:description "This property refers to a web page that provides access to the Dataset, its Distributions and/or additional information. It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator.";
-      sh:or ( [ sh:class foaf:Document ; ]
-        [ sh:datatype xsd:string ; ] );
-    ] ;
-  sh:property [
-      sh:path foaf:page ;
-      sh:description "This property refers to a page or document about this Dataset.";
-      sh:or ( [ sh:class foaf:Document ; ]
-        [ sh:datatype xsd:string ; ] );
-    ] ;
-  sh:property [
       sh:path adms:versionNotes ;
       sh:description "This property contains a description of the differences between this version and a previous version of the Dataset. This property can be repeated for parallel language versions of the version notes.";
       sh:datatype xsd:string ;
+    ] ;
+  sh:property [
+      sh:path prov:wasGeneratedBy ;
+      sh:description "This property refers to an Activity that generated, or provides the business context for, the creation of the Dataset.";
+      sh:or ( [ sh:class prov:Activity ; ]
+        [ sh:datatype xsd:string ; ] );
     ] ;
 ## Support for collections of datasets
   sh:property [
@@ -1524,39 +1557,8 @@ epos:DatasetShape
       sh:description "This property refers to a related Dataset that is part of the described Dataset.";
       sh:class dcat:Dataset ;
     ] ;
-  sh:property [
-      sh:path dqv:hasQualityAnnotation ;
-      sh:description "This property refers to a statement related to quality of the Dataset, including rating, quality certificate that can be associated to the Dataset. ";
-      sh:class oa:Annotation ;
-    ] ;
-  sh:property [
-      sh:path epos:annotation ;
-      sh:class oa:Annotation ;
-    ] ;
-
-  sh:property [
-      sh:path prov:qualifiedAttribution ;
-      sh:description "This property refers to a link to an Agent having some form of responsibility for the Dataset.";
-      sh:class prov:Attribution ;
-    ] ;
-  sh:property [
-      sh:path dct:isReferencedBy ;
-      sh:description "This property is about a related resource, such as a publication, that references, cites, or otherwise points to the Dataset.";
-      sh:or ( [ sh:class rdfs:Resource ; ]
-        [ sh:datatype xsd:string ; ] );
-    ] ;
-    sh:property [
-      sh:path schema:variableMeasured ;
-      sh:description "This property refers to a variable that is measured by the Dataset.";
-      sh:datatype xsd:string;
-    ] ;
-  sh:property [
-      sh:path prov:wasGeneratedBy ;
-      sh:description "This property refers to an Activity that generated, or provides the business context for, the creation of the Dataset.";
-      sh:or ( [ sh:class prov:Activity ; ]
-        [ sh:datatype xsd:string ; ] );
-    ] ;  
 .
+
 epos:FacilityShape
   a sh:NodeShape ;
   sh:targetClass epos:Facility ;
@@ -1589,6 +1591,14 @@ epos:FacilityShape
 # Facility recommended properties
 ####
   sh:property [
+      sh:path dcat:theme;
+      sh:description "This property refers to a category of the Facility. A Facility may be associated with multiple themes.";
+      sh:class skos:Concept ;
+      sh:minCount 1 ;
+      sh:message "Theme is recommended. Please fill in a value"@en  ;
+      sh:severity sh:Warning ;
+    ] ;
+  sh:property [
       sh:path dct:type ;
       sh:minCount 1 ;
       sh:or ( [ sh:datatype xsd:anyURI ; ]
@@ -1603,17 +1613,14 @@ epos:FacilityShape
         [ sh:class skos:Concept ; ] ) ;
       sh:maxCount 1 ;
     ] ;
-  sh:property [
-      sh:path dcat:theme;
-      sh:description "This property refers to a category of the Facility. A Facility may be associated with multiple themes.";
-      sh:class skos:Concept ;
-      sh:minCount 1 ;
-      sh:message "Theme is recommended. Please fill in a value"@en  ;
-      sh:severity sh:Warning ;
-    ] ;
   ####
   # Facility optional properties
   ####
+  sh:property [
+      sh:path dcat:contactPoint ;
+      sh:description "This property contains contact information that can be used for sending comments about the Facility.";
+      sh:node epos:ContactPointType ;
+    ] ;
   sh:property [
       sh:path dct:isPartOf ;
       sh:description "This property refers to a Facility in which the described Facility is included.";
@@ -1630,11 +1637,7 @@ epos:FacilityShape
       sh:description "This property refers to a page or document about this Facility.";
       sh:datatype xsd:anyURI ;
     ] ;
-  sh:property [
-      sh:path dcat:contactPoint ;
-      sh:description "This property contains contact information that can be used for sending comments about the Facility.";
-      sh:node epos:ContactPointType ;
-    ] ;
+
   sh:property [
       sh:path dct:relation ;
       sh:description "This property refers to a related resource (e.g., Dataset, WebService, etc).";
@@ -1642,10 +1645,6 @@ epos:FacilityShape
         [ sh:class dcat:Dataset ; ]
 	[ sh:class schema:Service ; ]
 	[ sh:class epos:WebService ; ] );
-    ] ;
-  sh:property [
-      sh:path epos:annotation ;
-      sh:class oa:Annotation;
     ] ;
   sh:property [
       sh:path dct:spatial ;
@@ -1689,19 +1688,6 @@ epos:DistributionShape
       sh:severity sh:Warning ;
     ] ;
   sh:property [
-      sh:path dct:type ;
-      sh:minCount 1 ;
-      sh:datatype xsd:anyURI;
-      sh:message "Type is recommended. Please fill in a value"@en  ;
-      sh:severity sh:Warning ;
-    ] ;
-  sh:property [
-      sh:path dct:type ;
-      sh:description "This property refers to the type of the Distribution.";
-      sh:datatype xsd:anyURI ;
-      sh:maxCount 1 ;
-    ] ;
-  sh:property [
       sh:path dct:description ;
       sh:description "This property contains a free-text account of the Distribution. This property can be repeated for parallel language versions of the description.";
       sh:minCount 1 ;
@@ -1724,9 +1710,41 @@ epos:DistributionShape
       sh:message "Format is recommended. Please fill in a value"@en  ;
       sh:severity sh:Warning ;
     ] ;
+  sh:property [
+      sh:path dct:type ;
+      sh:minCount 1 ;
+      sh:datatype xsd:anyURI;
+      sh:message "Type is recommended. Please fill in a value"@en  ;
+      sh:severity sh:Warning ;
+    ] ;
+  sh:property [
+      sh:path dct:type ;
+      sh:description "This property refers to the type of the Distribution.";
+      sh:datatype xsd:anyURI ;
+      sh:maxCount 1 ;
+    ] ;
   ####
   # Distribution optional properties
   ####
+  sh:property [
+      sh:path dcat:byteSize ;
+      sh:description "This property contains the size of a Distribution in bytes.";
+      sh:or ( [ sh:datatype xsd:string ; ]
+        [ sh:datatype xsd:decimal ; ] );
+      sh:maxCount 1 ;
+    ] ;
+  sh:property [
+      sh:path spdx:checksum ;
+      sh:description "This property provides a mechanism that can be used to verify that the contents of a distribution have not changed";
+      sh:class spdx:Checksum ;
+      sh:maxCount 1 ;
+    ] ;
+  sh:property [
+      sh:path dcat:downloadURL ;
+      sh:description "This property contains a URL that is a direct link to a downloadable file in a given format.";
+      #sh:class rdfs:Resource ;
+      sh:datatype xsd:anyURI ;
+    ] ;
   sh:property [
       sh:path dct:issued ;
       sh:description "This property contains the date of formal issuance (e.g., publication) of the Distribution.";
@@ -1746,26 +1764,27 @@ epos:DistributionShape
       sh:maxCount 1 ;
     ] ;
   sh:property [
+      sh:path dcat:mediaType ;
+      sh:description "This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA.";
+      sh:or ( [ sh:datatype xsd:string ; ]
+        [ sh:class dct:MediaTypeOrExtent ; ] );
+      sh:maxCount 1 ;
+    ] ;
+  sh:property [
       sh:path dct:modified ;
       sh:description "This property contains the most recent date on which the Distribution was changed or modified.";
       sh:maxCount 1 ;
       sh:node epos:DateOrDateTimeDataType ;
     ] ;
   sh:property [
+      sh:path foaf:page ;
+      sh:description "This property refers to a page or document about this Distribution.";
+      sh:class foaf:Document ;
+    ] ;
+  sh:property [
       sh:path dct:rights ;
       sh:description "This property refers to a statement that specifies rights associated with the Distribution.";
       sh:class dct:RightsStatement ;
-      sh:maxCount 1 ;
-    ] ;
-  sh:property [
-      sh:path dct:title ;
-      sh:description "This property contains a name given to the Distribution. This property can be repeated for parallel language versions of the description.";
-      sh:datatype xsd:string ;  
-    ] ;
-  sh:property [
-      sh:path spdx:checksum ;
-      sh:description "This property provides a mechanism that can be used to verify that the contents of a distribution have not changed";
-      sh:class spdx:Checksum ;
       sh:maxCount 1 ;
     ] ;
   sh:property [
@@ -1776,33 +1795,9 @@ epos:DistributionShape
       sh:maxCount 1 ;
     ] ;
   sh:property [
-      sh:path dcat:byteSize ;
-      sh:description "This property contains the size of a Distribution in bytes.";
-      sh:or ( [ sh:datatype xsd:string ; ]
-        [ sh:datatype xsd:decimal ; ] );
-      sh:maxCount 1 ;
-    ] ;
-  sh:property [
-      sh:path dcat:downloadURL ;
-      sh:description "This property contains a URL that is a direct link to a downloadable file in a given format.";
-      #sh:class rdfs:Resource ;
-      sh:datatype xsd:anyURI ;
-    ] ;
-  sh:property [
-      sh:path dcat:mediaType ;
-      sh:description "This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA.";
-      sh:or ( [ sh:datatype xsd:string ; ]
-        [ sh:class dct:MediaTypeOrExtent ; ] );
-      sh:maxCount 1 ;
-    ] ;
-  sh:property [
-      sh:path foaf:page ;
-      sh:description "This property refers to a page or document about this Distribution.";
-      sh:class foaf:Document ;
-    ] ;
-  sh:property [
-      sh:path epos:annotation ;
-      sh:class oa:Annotation ;
+      sh:path dct:title ;
+      sh:description "This property contains a name given to the Distribution. This property can be repeated for parallel language versions of the description.";
+      sh:datatype xsd:string ;  
     ] ;
 .
 epos:ProjectShape
@@ -2534,27 +2529,27 @@ epos:PostalAddressShape
  ];
 .
 
-epos:QuantitativeValueShape
-  a sh:NodeShape ;
-  sh:targetClass schema:QuantitativeValue ;
+#epos:QuantitativeValueShape
+#  a sh:NodeShape ;
+#  sh:targetClass schema:QuantitativeValue ;
   ####
   # QuantitativeValue properties
   ####
-  sh:property [
-      sh:path schema:unitCode ;
-      sh:description "The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.";
-      sh:datatype xsd:string;
-      sh:maxCount 1 ;
-      sh:minCount 1 ;
-    ] ;
-  sh:property [
-      sh:path schema:value ;
-      sh:description "The value of the quantitative value or property value node.The recommended type for values is 'Number'.";
-      sh:datatype xsd:double;
-      sh:maxCount 1 ;
-      sh:minCount 1 ;
-    ] ;
-.
+#  sh:property [
+#      sh:path schema:unitCode ;
+#      sh:description "The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.";
+#      sh:datatype xsd:string;
+#      sh:maxCount 1 ;
+#      sh:minCount 1 ;
+#    ] ;
+#  sh:property [
+#      sh:path schema:value ;
+#      sh:description "The value of the quantitative value or property value node.The recommended type for values is 'Number'.";
+#      sh:datatype xsd:double;
+#      sh:maxCount 1 ;
+#      sh:minCount 1 ;
+#    ] ;
+#.
 
 epos:LocationShape
   a sh:NodeShape ;
